@@ -23,3 +23,12 @@ backend/fitness.db
 .vscode/*
 !.vscode/extensions.json
 .DS_Store
+
+# baza SQLite (przenosimy regułę wyżej, bo na razie nie działa)
+backend/fitness.db
+
+# node_modules z dowolnego miejsca
+**/node_modules/
+
+# frontend-owe .gitignore – chcemy go usunąć, więc ignorujemy
+frontend/.gitignore
