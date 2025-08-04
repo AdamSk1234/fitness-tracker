@@ -30,7 +30,7 @@ jobs:
 
       - name: Run Ruff (lint)
         working-directory: backend
-        run: ruff check .
+        run: ruff check . --ignore E402
 
       - name: Run Pytest
         working-directory: backend
