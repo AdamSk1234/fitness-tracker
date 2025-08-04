@@ -6,10 +6,10 @@
 
 ## What you’ll find here
 
-- Flask 3** backend (Python 3.12) with JWT auth, SQLAlchemy + Alembic
-- React 19 + TypeScript 5** frontend powered by Vite & MUI dark theme
-- Docker‑first** workflow (`docker compose up`) — backend, frontend, database
-- GitHub Actions CI**: lint, tests, container build & push
+- Flask 3 backend (Python 3.12) with JWT auth, SQLAlchemy + Alembic
+- React 19 + TypeScript 5 frontend powered by Vite & MUI dark theme
+- Docker‑first workflow (docker compose up) — backend, frontend, database
+- GitHub Actions CI: lint, tests, container build & push
 
 ---
 
@@ -46,7 +46,7 @@ flask --app backend.app run
 
 ```bash
 cd frontend
-pnpm install   # or npm install
+pnpm install
 pnpm dev
 ```
 
@@ -55,9 +55,9 @@ pnpm dev
 ## Tests & linting
 
 ```bash
-pytest -q                # ≥ 85 % coverage
-ruff .                   # Python lint / format
-npm run lint --workspace frontend   # ESLint
+pytest -q
+ruff .
+npm run lint --workspace frontend
 ```
 
 GitHub Actions runs the same checks on every push.
