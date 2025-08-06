@@ -1,5 +1,7 @@
 # Fitness Tracker
 
+[![CI](https://github.com/AdamSk1234/fitness-tracker/actions/workflows/ci.yml/badge.svg)](https://github.com/AdamSk1234/fitness-tracker/actions/workflows/ci.yml)
+
 > **Why?** I hit the gym four times a week and was tired of juggling a worn‑out notebook and messy spreadsheets. This app keeps workouts, progress charts and goals in one tidy place — and lets me have some fun with a modern Python + React stack along the way.
 
 ---

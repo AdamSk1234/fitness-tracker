@@ -8,8 +8,8 @@ services:
       JWT_SECRET_KEY: dev-secret
     volumes:
       - backend-db:/app/fitness.db
-    expose:
-      - "5000"
+    ports:
+      - "5000:5000"
 
   frontend:
     build:
