@@ -1,16 +1,16 @@
-"""initial schema
+"""add user_id
 
-Revision ID: 60eff82dc257
-Revises: 
-Create Date: 2025-08-07 00:04:18.362390
+Revision ID: de9cf00db031
+Revises: 60eff82dc257
+Create Date: 2025-08-07 17:43:11.735025
 
 """
 import sqlalchemy as sa
 from alembic import op
 
 # revision identifiers, used by Alembic.
-revision = '60eff82dc257'
-down_revision = None
+revision = 'de9cf00db031'
+down_revision = '60eff82dc257'
 branch_labels = None
 depends_on = None
 

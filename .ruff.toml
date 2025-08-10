@@ -1,0 +1,22 @@
+line-length = 100
+target-version = "py312"
+
+[lint]
+# Typowe podstawowe reguły + importy (isort)
+select = ["E", "F", "I"]
+
+# WYKLUCZAMY migracje i kilka typowych katalogów:
+exclude = [
+  ".git",
+  ".venv",
+  "venv",
+  "__pycache__",
+  "node_modules",
+  "frontend/node_modules",
+  "migrations",
+  "backend/migrations",
+]
+
+[lint.isort]
+combine-as-imports = true
+known-first-party = ["backend"]
