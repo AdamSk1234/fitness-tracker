@@ -3,7 +3,7 @@ import {
   Box, Paper, Stack, TextField, MenuItem, Button, Typography, Alert, CircularProgress,
 } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { DataGrid, GridActionsCellItem } from '@mui/x-data-grid';
+import { DataGrid, GridActionsCellItem, useGridApiRef } from '@mui/x-data-grid';
 import type { GridColDef } from '@mui/x-data-grid';
 
 import { useForm } from 'react-hook-form';
@@ -50,12 +50,14 @@ export default function Sessions() {
   const [isLoading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  const apiRef = useGridApiRef();
+
   const load = useCallback(async () => {
     try {
       setLoading(true);
       const [{ data: typesData }, { data: sessData }] = await Promise.all([
         api.get<Type[]>('/exercise-types'),
-        api.get('/sessions'),
+        api.get('/sessions', { params: { page_size: 1000, page: 1 } }),
       ]);
       setTypes(typesData);
 
@@ -113,7 +115,37 @@ export default function Sessions() {
   };
 
   const columns: GridColDef[] = [
-    { field: 'id', headerName: 'ID', width: 70 },
+    {
+      field: 'lp',
+      headerName: 'Lp.',
+      width: 70,
+      sortable: false,
+      filterable: false,
+      renderCell: (params) => {
+        try {
+          const idxRel = (apiRef.current as any).getRowIndexRelativeToVisibleRows?.(params.id);
+          if (typeof idxRel === 'number' && idxRel >= 0) return idxRel + 1;
+
+          const getSorted = (apiRef.current as any).getSortedRowIds;
+          if (getSorted) {
+            const sorted: any[] = getSorted();
+            const model = (apiRef.current as any).state?.pagination?.paginationModel ?? { page: 0, pageSize: sorted.length || 0 };
+            const pos = sorted.indexOf(params.id);
+            if (pos >= 0) return pos - model.page * model.pageSize + 1;
+          }
+
+          const getVisible = (apiRef.current as any).getVisibleRowModels;
+          if (getVisible) {
+            const visible = Array.from(getVisible().keys?.() ?? []);
+            const pos2 = visible.indexOf(params.id as any);
+            if (pos2 >= 0) return pos2 + 1;
+          }
+        } catch {
+          /* noop */
+        }
+        return '';
+      },
+    },
     { field: 'exercise_type', headerName: 'Typ', flex: 1 },
     { field: 'duration', headerName: 'Minuty', width: 110 },
     { field: 'calories', headerName: 'Kcal', width: 110 },
@@ -190,10 +222,11 @@ export default function Sessions() {
       ) : (
         <Paper sx={{ height: 500 }}>
           <DataGrid
+            apiRef={apiRef}
             rows={rows}
             columns={columns}
-            pageSizeOptions={[5, 10, 25]}
-            initialState={{ pagination: { paginationModel: { pageSize: 10, page: 0 } } }}
+            pageSizeOptions={[10, 25, 50, 100]}
+            initialState={{ pagination: { paginationModel: { pageSize: 25, page: 0 } } }}
             disableRowSelectionOnClick
           />
         </Paper>

@@ -33,7 +33,6 @@ def upgrade():
         SELECT id, user_id, name FROM exercise_type
     """)
 
-    # Podmiana tabel
     op.drop_table("exercise_type")
     op.rename_table("exercise_type_new", "exercise_type")
 
