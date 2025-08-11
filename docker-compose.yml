@@ -4,17 +4,16 @@ services:
       context: .
       dockerfile: backend/Dockerfile
     environment:
-      DATABASE_URL: sqlite:///fitness.db
+      DATABASE_URL: sqlite:////app/db/fitness.db
       JWT_SECRET_KEY: dev-secret
     volumes:
-      - backend-db:/app/fitness.db
+      - backend-db:/app/db
     ports:
       - "5000:5000"
 
   frontend:
     build:
       context: ./frontend
-      dockerfile: Dockerfile
     depends_on:
       - backend
     ports:
