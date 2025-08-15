@@ -1,3 +1,9 @@
+# Secrets / dotenv
+.env
+*.env
+.env.*
+!*.env.example
+
 # Logs
 *.log
 npm-debug.log*
@@ -6,9 +12,11 @@ pnpm-debug.log*
 
 # Node / Front-end
 node_modules/
+**/node_modules/
 dist/
 dist-ssr/
 *.local
+frontend/.gitignore
 
 # Python
 __pycache__/
@@ -16,23 +24,19 @@ __pycache__/
 venv/
 .venv/
 env/
+
+# SQLite
 backend/fitness.db
 
-# IDE
+# IDE / OS
 .idea/
 .vscode/*
 !.vscode/extensions.json
 .DS_Store
 
-# baza SQLite (przenosimy regułę wyżej, bo na razie nie działa)
-backend/fitness.db
+# Coverage
+.coverage
 
-# node_modules z dowolnego miejsca
-**/node_modules/
-
-# frontend-owe .gitignore – chcemy go usunąć, więc ignorujemy
-frontend/.gitignore
-/fitness_tracker.egg-info
-.coverage
-.coverage
-.coverage
+# Alembic
+migrations/versions/b27cbc192b0a_add_oauth_fields_to_user.py
+/migrations/versions
