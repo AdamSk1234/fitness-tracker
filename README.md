@@ -179,8 +179,8 @@ docker compose down
 
 ---
 
-## Podgląd działania
+## Demo
 
 <p align="center">
-  <img src="docs/FitnessTrackerFilm.gif" alt="Podgląd działania – animacja" style="max-width: 950px; width: 100%;">
+  <img src="docs/FitnessTrackerFilm.gif" alt="App demo" style="max-width: 950px; width: 100%;">
 </p>
