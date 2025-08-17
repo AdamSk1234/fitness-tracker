@@ -6,6 +6,10 @@ A full-stack app for tracking workouts — exercise types, sessions, goals, and 
 
 ---
 
+<p align="center">
+  <img src="docs/FitnessTrackerFilm.gif" alt="App demo" style="max-width: 950px; width: 100%;">
+</p>
+
 ## Highlights
 
 - Email/password auth (JWT) **and** Google Sign-In (OAuth2/OIDC)
@@ -176,11 +180,3 @@ docker compose logs -f frontend
 # stop & remove
 docker compose down
 ```
-
----
-
-## Demo
-
-<p align="center">
-  <img src="docs/FitnessTrackerFilm.gif" alt="App demo" style="max-width: 950px; width: 100%;">
-</p>
