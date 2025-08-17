@@ -177,3 +177,10 @@ docker compose logs -f frontend
 docker compose down
 ```
 
+---
+
+## Podgląd działania
+
+<p align="center">
+  <img src="docs/FitnessTrackerFilm.gif" alt="Podgląd działania – animacja" style="max-width: 950px; width: 100%;">
+</p>
